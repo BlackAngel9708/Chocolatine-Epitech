@@ -92,5 +92,6 @@ char *my_strdup(char const *src);
 int my_str_replace(char *str, char c, char d);
 char **my_strdup_to_word_array(char *str);
 char **my_str_to_word_array(char const *str);
+char *my_strndup(char const *src, int n);
 
 #endif

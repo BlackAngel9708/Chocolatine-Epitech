@@ -49,6 +49,7 @@ SRC += flag_parser.c
 SRC += my_put_nbr_base.c
 SRC += my_str_to_word_array.c
 SRC += my_str_dup.c
+SRC += my_str_ndup.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -68,4 +69,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re all fclean clean
+.PHONY: all re clean fclean unit_tests

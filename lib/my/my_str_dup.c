@@ -12,7 +12,7 @@
 
 char *my_strdup(char const *src)
 {
-    char *duplicate = (char *) malloc(sizeof(my_strlen(src) +1));
+    char *duplicate = (char *) malloc(sizeof(char) * (my_strlen(src) + 1));
 
     if (src == NULL)
         return NULL;
