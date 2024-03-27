@@ -6,20 +6,13 @@
 */
 
 #include <criterion/criterion.h>
-#include <criterion/redirect.h>
-#include "../my.h"
 
-#include <assert.h>
-#include <string.h>
-
-void test_is_palindrome(void)
+Test(test_palindrome, should_return_0_for_palindrome)
 {
-    assert(is_palindrome("radar") == 0);
-    assert(is_palindrome("hello") == 84);
+    cr_assert_eq(palindrome("radar"), 0);
 }
 
-void test_is_not_palindrome(void)
+Test(test_palindrome, should_return_84_for_non_palindrome)
 {
-    assert(is_palindrome("apple") == 84);
-    assert(is_palindrome("banana") == 84);
+    cr_assert_eq(palindrome("hello"), 84);
 }
