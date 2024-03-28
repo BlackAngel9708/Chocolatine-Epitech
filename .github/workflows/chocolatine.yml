@@ -14,7 +14,7 @@ jobs:
     steps:
 
       - name: Checkout GH repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: ''
 
@@ -57,7 +57,7 @@ jobs:
     steps:
 
       - name: Checkout GH repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: ''
 
@@ -77,14 +77,14 @@ jobs:
           done
 
   run_tests:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     timeout-minutes: 2
     container: epitechcontent/epitest-docker:latest
     needs: check_program_compilation
     steps:
 
       - name: Checkout GH repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: ''
 
@@ -96,7 +96,7 @@ jobs:
     needs:  run_tests
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
