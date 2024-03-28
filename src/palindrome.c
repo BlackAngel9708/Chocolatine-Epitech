@@ -5,10 +5,8 @@
 ** palindrome.c
 */
 
-#include <stdio.h>
 #include <string.h>
-#include <criterion/criterion.h>
-#include <criterion/redirect.h>
+#include "../lib/my/my_printf.h"
 #include "../my.h"
 
 int palindrome(char *chaine)

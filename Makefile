@@ -19,7 +19,7 @@ NAME = palindrome
 
 TEST_NAME = unit_tests
 
-CPPFLAGS = -I./lib/my
+CPPFLAGS = -L./lib/my
 LDFLAGS = -L./lib/my -lmy -lcriterion
 
 CC = gcc
@@ -32,9 +32,10 @@ libmy:
 $(NAME):	libmy $(OBJ)
 		gcc $(CPPFLAGS) -L./lib/my -o $(NAME) $(OBJ) -lmy -lcriterion
 
-unit_tests:		CPPFLAGS +=--coverage
+unit_tests:		CPPFLAGS += -lcriterion --coverage
 unit_tests:		$(TEST_OBJ)
-	@	$(CC) -o $(TEST_NAME) $(TEST_OBJ) $(CPPFLAGS)
+	$(MAKE) -C lib/my
+	@	$(CC) -o $(TEST_NAME) $(TEST_OBJ) $(CPPFLAGS) -lmy
 
 debug: 	CPPFLAGS +=-g3
 debug: $(OBJ)
@@ -47,9 +48,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(TEST_NAME)
 	find -name "*.a" -delete
 	find -name "vgcore*" -delete
 	find -name "*.o" -delete
+	find -name "*.gcno" -delete
+	find -name "*.gcda" -delete
 
 re:fclean all
 

@@ -6,6 +6,7 @@
 */
 
 #include <criterion/criterion.h>
+#include "../lib/my/my_printf.h"
 
 Test(test_palindrome, should_return_0_for_palindrome)
 {

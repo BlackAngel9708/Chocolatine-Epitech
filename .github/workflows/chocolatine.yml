@@ -43,11 +43,11 @@ jobs:
 
       - name: Report banana result
         run: |
-            NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
-            NB_ERROR=$((NB_ERROR-1))
-            if [ $NB_ERROR -gt 0 ]; then
-              exit 1
-            fi
+          NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
+          NB_ERROR=$((NB_ERROR-1))
+          if [ $NB_ERROR -gt 0 ]; then
+            exit 1
+          fi
 
   check_program_compilation:
     runs-on: ubuntu-latest
@@ -56,25 +56,25 @@ jobs:
     needs: check_coding_style
     steps:
 
-    - name: Checkout GH repository
-      uses: actions/checkout@master
-      with:
-        repository: ''
+      - name: Checkout GH repository
+        uses: actions/checkout@master
+        with:
+          repository: ''
 
-    - name: Compile repository
-      run: make
+      - name: Compile repository
+        run: make
 
-    - name: Clean repository
-      run: make fclean
+      - name: Clean repository
+        run: make fclean
 
-    - name: Check file
-      run: |
-        for file in ${{ vars.EXECUTABLES }};do
-          if [ ! -x "$file" ]; then
-            echo "File $file does not exist or is not executable"
-            exit 1
-          fi
-        done
+      - name: Check file
+        run: |
+          for file in ${{ vars.EXECUTABLES }};do
+            if [ ! -x "$file" ]; then
+              echo "File $file does not exist or is not executable"
+              exit 1
+            fi
+          done
 
   run_tests:
     runs-on: ubuntu_latest
@@ -83,13 +83,13 @@ jobs:
     needs: check_program_compilation
     steps:
 
-    - name: Checkout GH repository
-      uses: actions/checkout@master
-      with:
-       repository: ''
+      - name: Checkout GH repository
+        uses: actions/checkout@master
+        with:
+          repository: ''
 
-    - name: Compile tests binaries
-      run: make unit_tests
+      - name: Compile tests binaries
+        run: make unit_tests
 
   push_to_mirror:
     runs-on: ubuntu-latest
@@ -110,4 +110,4 @@ jobs:
           target_repo_url:
             git@github.com:JimmyRamsamynaick/chocolatine.git
           ssh_private_key:
-              ${{ secrets.SSH_PRIVATE_KEY }}
+            ${{ secrets.SSH_PRIVATE_KEY }}
