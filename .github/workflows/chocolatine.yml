@@ -104,4 +104,4 @@ jobs:
           target_repo_url:
             ${{ VARS.TARGET_REPO_URL }}
           ssh_private_key:
-            ${{ SECRET.SSSH_PRIVATE_KEY }}
+            ${{ SECRETS.SSH_PRIVATE_KEY }}
