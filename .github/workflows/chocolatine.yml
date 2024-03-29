@@ -11,6 +11,15 @@ env:
   MIRROR_URL: git@github.com:EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick.git
   EXECUTABLES: 'palindrome'
 jobs:
+  no_test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GH repository
+        uses: actions/checkout@v2
+        with:
+          repository: ' '
+      - name: No test job
+        run: echo "No tests are run in this job. It stops immediately."
   check_coding_style:
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
@@ -105,16 +114,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Push to mirror
-        if: github.repository != 'EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick'
         uses: pixta-dev/repository-mirroring-action@v1.1.1
         with:
           target_repo_url:
             ${{ env.MIRROR_URL }}
           ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
-      - name: Stop if push to mirror succeded
-        run: |
-            if [ $? -eq 0 ]; then
-              echo "Push to mirror succeded, stopping further execution."
-            exit 0
-            fi
