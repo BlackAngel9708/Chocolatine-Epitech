@@ -42,10 +42,14 @@ jobs:
         run: check.sh $(pwd) $(pwd)
       - name: Report banana result
         run: |
-          NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
-          NB_ERROR=$((NB_ERROR-1))
+          if [ -f/tmp/coding-style-reports.log ] && [ -s /tmp/coding-style-reports.log ]; then
+            NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
+            NB_ERROR=$((NB_ERROR-1))
           if [ $NB_ERROR -gt 0 ]; then
             exit 1
+          fi
+          else
+          echo "Error:/tmp/coding-style-reports.log does not exist or is empty"
           fi
 
   check_program_compilation:
