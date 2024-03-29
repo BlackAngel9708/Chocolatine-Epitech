@@ -98,9 +98,10 @@ jobs:
   push_to_mirror:
     runs-on: ubuntu-latest
     needs:  run_tests
-    if: github.event_name == 'push' && github.repository == 'EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick'
+    if: github.event_name == 'push'
     steps:
       - name: Checkout GH repository
+        if: ${{github.repository}} != 'EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
