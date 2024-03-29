@@ -100,7 +100,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout GH repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         with:
           fetch-depth: 0
       - name: Push to mirror
