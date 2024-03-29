@@ -72,7 +72,7 @@ jobs:
 
       - name: Check file
         run: |
-          for file in ${{ env.EXECUTABLES }};do
+          for file in $EXECUTABLES;do
             if [ ! -x "$file" ]; then
               echo "File $file does not exist or is not executable"
               exit 1
