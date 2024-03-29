@@ -100,11 +100,11 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout GH repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Push to mirror
-        uses: pixta-dev/repository-mirroring-action@v1
+        uses: pixta-dev/repository-mirroring-action@v1.1.1
         with:
           target_repo_url:
             ${{ env.REPO_URL }}
