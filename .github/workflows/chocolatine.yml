@@ -39,7 +39,7 @@ jobs:
           repository: ''
 
       - name: Run coding-style
-        run: check.sh . /tmp
+        run: check.sh $(pwd) $(pwd)
 
       - name: Create annotation for coding-style errors
         run: |
