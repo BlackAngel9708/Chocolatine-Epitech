@@ -111,3 +111,9 @@ jobs:
             ${{ env.REPO_URL }}
           ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+      - name: Stop if push to mirror succeded
+        run: |
+            if [ $? -eq 0 ]; then
+              echo "Push to mirror succeded, stopping further execution."
+            exit 0
+            fi
