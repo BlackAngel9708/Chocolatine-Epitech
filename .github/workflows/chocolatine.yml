@@ -38,17 +38,35 @@ jobs:
         with:
           repository: ''
 
+      - name: Run coding-style
+        run: check.sh . /tmp
+
       - name: Create annotation for coding-style errors
         run: |
-          check.sh $(pwd) $(pwd)
-          CODING_STYLE_ERROR=$(cat $(pwd)/coding_style_error.log)
-          for ERRORS in $CODING_STYLE_ERROR; do
-            echo "::error file=${array[1]#./}, title=${array[3]#./} coding style error detected: ${array[2]#./}"
-          done
-          if [[ -n $CODING_STYLE_ERROR ]]; then
+          input=/tmp/coding-style-reports.log
+          if [ !-f "$input"] || [ !-s "$input"]; then
+            echo "Error: $input file does not exist or is empty"
             exit 1
-          else
-          echo "No coding style error detected"
+          fi
+          while IFS= read -r -a line; do
+            fields=($(printf "%s" "$line"|cut -d':' --output-delimiter=' ' -f1-))
+          if [ ${#fields[@]} -ne 4 ]; then
+          echo "Error: Unexpected number of fields in line: $line"
+          continue
+          fi
+          if [ -z "${fields[0]}" ] || [ -z "${fields[1]}" ] || [ -z "${fields[2]}" ] || [ -z "${fields[3]}" ]; then
+          echo "Error: Missing data in fields array: ${fields[@]}"
+          continue
+          fi
+          echo "::error title=${fields[2]} coding style error, file=${fields[0]}, line=${fields[1]}::${fields[3]}"
+          done < $input
+
+      - name: Report banana result
+        run: |
+          NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
+          NB_ERROR=$((NB_ERROR-1))
+          if [ $NB_ERROR -gt 0 ]; then
+            exit 1
           fi
 
   check_program_compilation:
