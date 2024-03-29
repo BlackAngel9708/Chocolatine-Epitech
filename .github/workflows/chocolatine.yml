@@ -40,27 +40,6 @@ jobs:
 
       - name: Run coding-style
         run: check.sh $(pwd) $(pwd)
-
-      - name: Create annotation for coding-style errors
-        run: |
-          input=/tmp/coding-style-reports.log
-          if [ ! -f "$input" ] || [ ! -s "$input" ]; then
-            echo "Error: $input file does not exist or is empty"
-            exit 1
-          fi
-          while IFS= read -r -a line; do
-            fields=($(printf "%s" "$line"|cut -d':' --output-delimiter=' ' -f1-))
-          if [ ${#fields[@]} -ne 4 ]; then
-          echo "Error: Unexpected number of fields in line: $line"
-          continue
-          fi
-          if [ -z "${fields[0]}" ] || [ -z "${fields[1]}" ] || [ -z "${fields[2]}" ] || [ -z "${fields[3]}" ]; then
-          echo "Error: Missing data in fields array: ${fields[@]}"
-          continue
-          fi
-          echo "::error title=${fields[2]} coding style error, file=${fields[0]}, line=${fields[1]}::${fields[3]}"
-          done < $input
-
       - name: Report banana result
         run: |
           NB_ERROR=$(cat /tmp/coding-style-reports.log | wc -l)
