@@ -28,6 +28,7 @@ jobs:
           fi
 
   check_coding_style:
+    needs: no_test_job
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
