@@ -44,7 +44,7 @@ jobs:
       - name: Create annotation for coding-style errors
         run: |
           input=/tmp/coding-style-reports.log
-          if [ !-f "$input"] || [ !-s "$input"]; then
+          if [ ! -f "$input" ] || [ ! -s "$input" ]; then
             echo "Error: $input file does not exist or is empty"
             exit 1
           fi
