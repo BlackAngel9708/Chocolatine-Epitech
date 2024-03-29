@@ -7,9 +7,9 @@ on:
   pull_request:
     branches-ignore:
       - " ga-ignore-"
-    env:
-      REPO_URL: git@github.com:EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick.git
-      EXECUTABLES: 'palindrome'
+env:
+  REPO_URL: git@github.com:EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick.git
+  EXECUTABLES: 'palindrome'
 jobs:
   check_coding_style:
     runs-on: ubuntu-latest
