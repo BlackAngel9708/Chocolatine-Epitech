@@ -63,6 +63,14 @@ Chocolatine is a project developed at Epitech for conducting coding style checks
 
 This workflow automates the process of verifying code quality, compiling the project, running tests, and pushing changes to the Epitech repository, ensuring a smooth integration process.
 
+## Comment me contacter
+#### cliquez sur les images ci dessous
+[![My Skills](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/jimmy-ramsamyna%C3%AFck-9b2144288/)
+[![My Skills](https://skillicons.dev/icons?i=gmail)](mailto:jimmyramsamynaick@gmail.com)
+[![My Skills](https://skillicons.dev/icons?i=twitter)](https://twitter.com/blackangel9708)
+
+N'hésitez pas à explorer mes projets et à me contacter si vous avez des questions ou des suggestions !
+
 ---
 #### Contributors
 - [Jimmy](https://github.com/JimmyRamsamynaick)
