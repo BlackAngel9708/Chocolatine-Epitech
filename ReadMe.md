@@ -62,3 +62,7 @@ Chocolatine is a project developed at Epitech for conducting coding style checks
 - **SECRETSSH_PRIVATE_KEY**: SSH private key required for pushing changes to the Epitech repository.
 
 This workflow automates the process of verifying code quality, compiling the project, running tests, and pushing changes to the Epitech repository, ensuring a smooth integration process.
+
+---
+#### Contributors
+- [Jimmy](https://github.com/JimmyRamsamynaick)
