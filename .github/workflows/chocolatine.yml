@@ -101,7 +101,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout GH repository
-        if: ${{github.repository}} != 'EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick'
+        if: github.repository != 'EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
