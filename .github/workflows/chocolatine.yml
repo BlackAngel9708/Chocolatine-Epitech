@@ -45,13 +45,18 @@ jobs:
         id: annotations
         if: failure()
         run: |
-          cat coding-style-reports.log | while read line ; do
-            echo "$line" >> error.log;
-          done;
-          if [ -s error.log ]; then
-            echo "::error file=error.log::$(cat error.log)"
-              exit 1
-            fi
+          check.sh $(pwd) $(pwd)
+          CODING_STYLE_ERRORS=$(cat $(pwd)/coding-style-reports.log)
+          for ERRORS in $CODING_STYLE_ERRORS; do
+             array=(`echo $ERRORS | sed 's/:/\n/g'`)
+             echo "::error file=${array[1]#./}, title=${array[3]#./} coding style errors detected: ${array[2]#./}
+          done
+          if [[ -n $CODING_STYLE_ERRORS ]]
+          then
+            exit 1
+          else
+            echo No coding style errors detected.
+          fi
 
       - name: Fail the job if there are any coding style errors.
         if: failure()
