@@ -69,6 +69,7 @@ if [ $NB_ERROR -ge 1 ]; then
     echo "Banana found $NB_ERROR error(s)"
     echo "$ERRORS"
     exit 1
-fi
+else
     echo "Everything is good ! Keep on coding !"
     exit 0
+fi
