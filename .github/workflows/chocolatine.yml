@@ -48,7 +48,10 @@ jobs:
           cat coding-style-reports.log | while read line ; do
             echo "$line" >> error.log;
           done;
-          echo "::error file=error.log::$(cat error.log)"
+          if [ -s error.log ]; then
+            echo "::error file=error.log::$(cat error.log)"
+              exit 1
+            fi
 
       - name: Fail the job if there are any coding style errors.
         if: failure()
