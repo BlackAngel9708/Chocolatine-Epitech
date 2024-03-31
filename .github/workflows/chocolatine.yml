@@ -43,9 +43,7 @@ jobs:
 
       - name: Display coding style errors as annotations if any
         id: annotations
-        if: failure()
         run: |
-          check.sh $(pwd) $(pwd) 
           NB_ERRORS=$(cat coding_style_errors.log | wc -l)
           if [ $NB_ERRORS -ge 1 ]; then
             ERROR=$(cat coding-style-errors.log)
