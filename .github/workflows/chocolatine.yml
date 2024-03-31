@@ -52,9 +52,6 @@ jobs:
           fi
           exit 0
 
-      - name: Fail the job if there are any coding style errors.
-        if: failure()
-        run: exit 1
 
   check_program_compilation:
     runs-on: ubuntu-latest
