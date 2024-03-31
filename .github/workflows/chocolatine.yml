@@ -44,9 +44,9 @@ jobs:
       - name: Display coding style errors as annotations if any errors
         id: annotations
         run: |
-          NB_ERRORS=$(cat coding-style-errors.log | wc -l)
+          NB_ERRORS=$(cat coding-style-reports.log | wc -l)
           if [ $NB_ERRORS -ge 1 ]; then
-            ERROR=$(cat coding-style-errors.log)
+            ERROR=$(cat coding-style-reports.log)
             echo "::error title=$NB_ERRORS coding style errors found::$ERROR"
             exit 1
           fi
