@@ -46,11 +46,11 @@ jobs:
         run: |
           NB_ERRORS=$(cat coding-style-reports.log | wc -l)
           if [ $NB_ERRORS -ge 1 ]; then
-            while IFS=read -r line
-            do
-              FILE=$(echo $line | cut -d ':' -f1)
-              LINE=$(echo $line | cut -d ':' -f2)
-              ERROR=$(echo $line | cut -d ':' -f3-)
+             while IFS=read -r line
+              do
+                FILE=$(echo $line | cut -d ':' -f1)
+                LINE=$(echo $line | cut -d ':' -f2)
+                ERROR=$(echo $line | cut -d ':' -f3-)
               echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding style errors found::$ERROR"
             done < coding-style-reports.log
               exit 1
