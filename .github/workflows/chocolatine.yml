@@ -39,6 +39,7 @@ jobs:
           repository: ' '
 
       - name: Run coding-style checker script
+        run: check.sh $(pwd) $(pwd) > coding_style_errors.log
 
       - name: Display coding style errors as annotations if any
         id: annotations
