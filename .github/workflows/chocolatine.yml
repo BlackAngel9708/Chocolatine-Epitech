@@ -45,7 +45,7 @@ jobs:
         id: annotations
         if: failure()
         run: |
-          NB_ERRORS=$(cat coding_style_errors.txt | wc -l)
+          NB_ERRORS=$(cat coding_style_errors.log | wc -l)
           if [ $NB_ERRORS -gt 0 ]; then
             ERROR=$(cat coding-style-errors.log)
             echo "::error title=$NB_ERRORS coding style errors found::$ERROR"
