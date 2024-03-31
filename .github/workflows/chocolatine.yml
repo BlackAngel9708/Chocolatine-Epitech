@@ -34,7 +34,6 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
-        with:
 
       - name: Run coding-style checker script
         run: check.sh $(pwd) $(pwd)
@@ -65,7 +64,6 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
-        with:
 
       - name: Compile repository
         run: make
@@ -92,7 +90,6 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
-        with:
 
       - name: Compile tests binaries
         run: make unit_tests
@@ -104,12 +101,10 @@ jobs:
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        fetch-depth: 0
       - name: Push to mirror
         uses: pixta-dev/repository-mirroring-action@v1.1.1
-        with:
-          target_repo_url:
-            ${{ env.MIRROR_URL }}
-          ssh_private_key:
+        target_repo_url:
+          ${{ env.MIRROR_URL }}
+        ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
