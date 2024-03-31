@@ -17,6 +17,7 @@ jobs:
       - name: Checkout GH repository
         uses: actions/checkout@v4
         with:
+          repository: ' '
       - name: No test job
         run: |
           if [[ "${{ github.repository }}" == "EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick" ]]; then
@@ -34,6 +35,8 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
+        with:
+          repository: ' '
 
       - name: Run coding-style checker script
         run: check.sh $(pwd) $(pwd)
@@ -64,6 +67,8 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
+        with:
+          repository: ''
 
       - name: Compile repository
         run: make
@@ -90,6 +95,8 @@ jobs:
 
       - name: Checkout GH repository
         uses: actions/checkout@v4
+        with:
+          repository: ''
 
       - name: Compile tests binaries
         run: make unit_tests
@@ -101,10 +108,12 @@ jobs:
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
-        fetch-depth: 0
+        with:
+          fetch-depth: 0
       - name: Push to mirror
         uses: pixta-dev/repository-mirroring-action@v1.1.1
-        target_repo_url:
-          ${{ env.MIRROR_URL }}
-        ssh_private_key:
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
