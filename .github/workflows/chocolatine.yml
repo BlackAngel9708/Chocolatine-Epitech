@@ -52,9 +52,9 @@ jobs:
               LINE=$(echo $line | cut -d ':' -f2)
               ERROR=$(echo $line | cut -d ':' -f3-)
               echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding style errors found::$ERROR"
-                done < coding-style-reports.log
+            done < coding-style-reports.log
               exit 1
-            fi
+          fi
             exit 0
 
 
