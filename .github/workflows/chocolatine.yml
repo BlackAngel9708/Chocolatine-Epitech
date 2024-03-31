@@ -46,7 +46,7 @@ jobs:
         run: |
           NB_ERRORS=$(cat coding-style-reports.log | wc -l)
           if [ $NB_ERRORS -ge 1 ]; then
-             while IFS=read -r line
+             while IFS= read -r line
               do
                 FILE=$(echo $line | cut -d ':' -f1)
                 LINE=$(echo $line | cut -d ':' -f2)
