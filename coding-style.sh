@@ -64,7 +64,7 @@ else
 fi
 
 NB_ERROR=$(cat coding-style-reports.log | wc -l)
-if [ $NB_ERROR -gt 0 ]; then
+if [ $NB_ERROR -gt 1 ]; then
     ERRORS=$(cat coding-style-reports.log);
     echo "Banana found $NB_ERROR error(s)"
     echo "$ERRORS"

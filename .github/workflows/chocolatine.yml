@@ -36,7 +36,7 @@ jobs:
       - name: Checkout GH repository
         uses: actions/checkout@v4
         with:
-          repository: ''
+          repository: ' '
 
       - name: Run coding-style checker script
         run: check.sh $(pwd) $(pwd)
@@ -46,7 +46,7 @@ jobs:
         if: failure()
         run: |
           NB_ERRORS=$(cat coding_style_errors.log | wc -l)
-          if [ $NB_ERRORS -gt 0 ]; then
+          if [ $NB_ERRORS -ge 1 ]; then
             ERROR=$(cat coding-style-errors.log)
             echo "::error title=$NB_ERRORS coding style errors found::$ERROR"
             exit 1
