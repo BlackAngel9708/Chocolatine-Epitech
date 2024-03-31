@@ -54,8 +54,8 @@ jobs:
               echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding style errors found::$ERROR"
                 done < coding-style-reports.log
               exit 1
-          fi
-          exit 0
+            fi
+            exit 0
 
 
   check_program_compilation:
