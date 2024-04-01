@@ -1,60 +1,54 @@
 ##
-## EPITECH PROJECT, 2024
-## jimmy
+## EPITECH PROJECT, 2023
+## stumpers
 ## File description:
 ## Makefile
 ##
 
-SRC = main.c
-SRC += $(wildcard src/*.c)
 
-OBJ	= $(SRC:.c=.o)
 
-TEST_SRC = ./src/palindrome.c
-TEST_SRC += $(wildcard tests/*.c)
+SRC 	=	src/main.c \
+			src/utils.c \
+			src/swapupcase.c
 
-TEST_OBJ = $(TEST_SRC:.c=.o)
+TESTS_SRC 	=	src/utils.c \
+				src/swapupcase.c
 
-NAME = palindrome
+OBJ 	=	$(SRC:.c=.o)
 
-TEST_NAME = unit_tests
+NAME 	=	swapupcase
 
-CPPFLAGS = -L./lib/my
-LDFLAGS = -L./lib/my -lmy -lcriterion
+CPPFLAGS	=	-I./include
 
-CC = gcc
+all:	$(NAME)
 
-all: $(NAME)
+$(NAME):	$(OBJ)
+		gcc -o $(NAME) $(OBJ)
 
-libmy:
-	make -s -C lib/my
+debug:
+		gcc -o $(NAME) $(SRC) $(CPPFLAGS) -ggdb3
 
-$(NAME):	libmy $(OBJ)
-		gcc $(CPPFLAGS) -L./lib/my -o $(NAME) $(OBJ) -lmy -lcriterion
+compile_tests:
+		gcc -o unit_testing $(TESTS_SRC) tests/unit_tests.c \
+		$(CPPFLAGS) --coverage -lcriterion
+		gcc -o integration_testing $(TESTS_SRC) tests/integration_tests.c \
+		$(CPPFLAGS) --coverage -lcriterion
 
-unit_tests:		CPPFLAGS += -lcriterion --coverage
-unit_tests:		$(TEST_OBJ)
-	$(MAKE) -C lib/my
-	@	$(CC) -o $(TEST_NAME) $(TEST_OBJ) $(CPPFLAGS) -lmy
+tests_run:	compile_tests
+		./unit_testing
+		./integration_testing
 
-debug: 	CPPFLAGS +=-g3
-debug: $(OBJ)
-	$(MAKE)-C lib/my
-	$(CC)-o $(NAME) $(OBJ) -lmy
+tests:	tests_run
+		gcovr --exclude tests/
+		gcovr --exclude tests/ --branches
 
 clean:
-	rm $(OBJ)
 	find -name "*.o" -delete
+	find -name "*.gc*" -delete
 
-fclean: clean
-	rm -f $(NAME)
-	rm -f $(TEST_NAME)
-	find -name "*.a" -delete
-	find -name "vgcore*" -delete
-	find -name "*.o" -delete
-	find -name "*.gcno" -delete
-	find -name "*.gcda" -delete
+fclean:	clean
+	rm -f $(NAME) unit_testing integration_testing
 
-re:fclean all
+re:	fclean all
 
-.PHONY: re all fclean clean unit_tests
+.PHONY: all clean fclean re tests tests_run debug

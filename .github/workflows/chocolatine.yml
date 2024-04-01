@@ -9,7 +9,7 @@ on:
       - " ga-ignore-"
 env:
   MIRROR_URL: git@github.com:EpitechPromo2028/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick.git
-  EXECUTABLES: 'palindrome'
+  EXECUTABLES: 'swapupcase'
 jobs:
   no_test_job:
     runs-on: ubuntu-latest
