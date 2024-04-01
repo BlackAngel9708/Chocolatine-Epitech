@@ -52,8 +52,7 @@ jobs:
                 FILE=$(realpath --relative-to=$(pwd) $FILE)
                 LINE=$(echo $line | cut -d ':' -f2)
                 ERROR=$(echo $line | cut -d ':' -f3-)
-              echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding 
-              style errors found::$ERROR"
+              echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding style errors found::$ERROR"
             done < coding-style-reports.log
               exit 1
           fi
