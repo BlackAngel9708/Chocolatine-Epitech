@@ -4,15 +4,25 @@ Chocolatine is a project developed at Epitech for conducting coding style checks
 
 ## Workflow Overview
 
-1. **Coding Style Check**: This job ensures that the code follows the prescribed coding style. It runs a series of checks on the codebase to detect any style violations.
+1. **No Test Job**: This step checks if the current repository received the clone. If so, it stops all other tests; otherwise, it proceeds to the next test (coding style).
 
-2. **Program Compilation Check**: After passing the coding style check, the project is compiled to ensure that it builds successfully without errors.
+2. **Coding Style Check**: This job ensures that the code follows the prescribed coding style. It runs a series of checks on the codebase to detect any style violations.
 
-3. **Unit Test Execution**: Upon successful compilation, unit tests are executed to verify the functionality of the code.
+3. **Program Compilation Check**: After passing the coding style check, the project is compiled to ensure that it builds successfully without errors.
 
-4. **Push to Epitech Repository**: Finally, if all previous steps are successful, the changes are pushed to the Epitech repository for further review and integration.
+4. **Unit Test Execution**: Upon successful compilation, unit tests are executed to verify the functionality of the code.
+
+5. **Push to Epitech Repository**: Finally, if all previous steps are successful, the changes are pushed to the Epitech repository for further review and integration.
 
 ## Workflow Details
+
+### no_test_job
+
+- **Job Name**: `no_test_job`
+- **Runs On**: Ubuntu latest
+- **Steps**:
+  1. **Check Current Repository**: Verifies if the current repository is the one that received the clone.
+  2. **Stop Other Tests**: If the current repository is the one that received the clone, stop all other tests. Otherwise, proceed to the next test (coding style).
 
 ### Coding Style Check
 
