@@ -16,7 +16,7 @@ Chocolatine is a project developed at Epitech for conducting coding style checks
 
 ## Workflow Details
 
-### no_test_job
+### No_test_job
 
 - **Job Name**: `no_test_job`
 - **Runs On**: Ubuntu latest
