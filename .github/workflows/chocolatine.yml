@@ -20,7 +20,7 @@ jobs:
           repository: ' '
       - name: No test job
         run: |
-          if [[ "${{ github.repository }}" == "${{ env.MIRROR_URL }}" ]]; then
+          if [[ "${{ github.repository }}" == "$env.MIRROR_URL" ]]; then
             echo "No test are run in this job. It stops immediately"
             exit 1
           else
