@@ -44,12 +44,13 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/jimmy/devops/chocolatine/B-DOP-200-BDX-2-1-chocolatine-jimmy.ramsamynaick",
+    "last_opened_file_path": "/home/jimmy/project_github/DevOpsEpitech/chocolatine/Chocolatine-Epitech",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
     "org.rust.first.attach.projects.stats": "true",
     "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
     "vue.rearranger.settings.migration": "true"
@@ -66,6 +67,7 @@
       <workItem from="1711571054274" duration="3813000" />
       <workItem from="1711639543712" duration="1227000" />
       <workItem from="1711640780106" duration="4189000" />
+      <workItem from="1712303178579" duration="444000" />
     </task>
     <servers />
   </component>

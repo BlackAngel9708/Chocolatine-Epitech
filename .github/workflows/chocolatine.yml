@@ -49,9 +49,9 @@ jobs:
              while IFS= read -r line
               do
                 FILE=$(echo $line | cut -d ':' -f1)
-                FILE=$(realpath --relative-to=$(pwd) $FILE)
                 LINE=$(echo $line | cut -d ':' -f2)
                 ERROR=$(echo $line | cut -d ':' -f3-)
+                FILE=$(realpath --relative-to=$(pwd) $FILE)
               echo "::error file=$FILE,line=$LINE,title=$NB_ERRORS coding style errors found::$ERROR"
             done < coding-style-reports.log
               exit 1
